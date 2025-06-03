@@ -54,6 +54,34 @@
 游戏的演示视频已发布在B站，您可以点击以下链接观看：
 [B站视频介绍](https://www.bilibili.com/video/BV15WLyzzE3h/)
 
+## 如何在Godot中打开和运行游戏
+1. **下载游戏文件**  
+   从GitHub仓库下载`game_file`文件夹。
+   [下载game_file](https://github.com/wjj1234321/godot_game/releases/download/v1.0/game_file.zip)
+
+2. **下载并安装Godot 4**  
+   访问[Godot官网](https://godotengine.org/download)下载并安装Godot 4。
+
+3. **导入项目**  
+   - 打开Godot 4。
+   - 选择左上角的【导入】按钮。
+   - 选择下载的`game_file`文件夹。
+
+4. **运行游戏**  
+   在Godot中点击【运行】按钮即可开始游戏。
+
+## 如何直接运行游戏
+如果你不想在Godot中运行游戏，可以直接下载并运行游戏的可执行文件（exe）。
+
+1. **下载可执行文件**  
+   从GitHub仓库下载游戏的可执行文件。
+
+2. **运行游戏**  
+   双击下载的`Game.exe`文件即可直接运行游戏。
+
+### 注意事项
+- 目前游戏暂不支持iOS系统。
+- 确保你的电脑上安装了最新版本的Godot 4，以确保游戏能够正常运行。
 
 ## GitHub仓库
 游戏的源代码和相关文件已上传至GitHub仓库，您可以通过以下链接访问：
