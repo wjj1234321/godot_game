@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2k42jdp105q8"]
+
+[ext_resource type="Texture2D" uid="uid://bmoukvg6n4up8" path="res://brackeys_platformer_assets/sprites/knight (1).png" id="1_8gwer"]
+[ext_resource type="Script" uid="uid://7hwukjlqxi4r" path="res://scripts/soldier.gd" id="2_gtgys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gwer"]
+atlas = ExtResource("1_8gwer")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtgys"]
+atlas = ExtResource("1_8gwer")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f3g7"]
+atlas = ExtResource("1_8gwer")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp2in"]
+atlas = ExtResource("1_8gwer")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgleu"]
+atlas = ExtResource("1_8gwer")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0grt"]
+atlas = ExtResource("1_8gwer")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rmxv"]
+atlas = ExtResource("1_8gwer")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i558"]
+atlas = ExtResource("1_8gwer")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rmxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gwer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtgys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f3g7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp2in")
+}],
+"loop": true,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgleu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0grt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rmxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i558")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8ado"]
+size = Vector2(13, 17)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("2_gtgys")
+
+[node name="soldierAnimation" type="AnimatedSprite2D" parent="." groups=["ball"]]
+sprite_frames = SubResource("SpriteFrames_7rmxv")
+animation = &"death"
+frame_progress = 0.672909
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_u8ado")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://brannv5hjs681"]
+
+[ext_resource type="Texture2D" uid="uid://br7gexaristmx" path="res://brackeys_platformer_assets/sprites/子弹.png" id="1_ps6q5"]
+[ext_resource type="Script" uid="uid://w4gepbt5bule" path="res://scripts/子弹.gd" id="2_2dcgb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2dcgb"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltj5j"]
+atlas = ExtResource("1_ps6q5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0r4k"]
+atlas = ExtResource("1_ps6q5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0ijm"]
+atlas = ExtResource("1_ps6q5")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uavm8"]
+atlas = ExtResource("1_ps6q5")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6d0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltj5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0r4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0ijm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uavm8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="Area2D" type="Area2D" groups=["头像"]]
+script = ExtResource("2_2dcgb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["头像"]]
+shape = SubResource("CircleShape2D_2dcgb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["头像"]]
+sprite_frames = SubResource("SpriteFrames_w6d0w")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.565355
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

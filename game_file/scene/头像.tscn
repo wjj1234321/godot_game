@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvu3t5jl76y84"]
+
+[ext_resource type="Script" uid="uid://roclyhx5ftjg" path="res://scripts/头像.gd" id="1_4qu41"]
+[ext_resource type="Texture2D" uid="uid://ddkbgunhcwihj" path="res://brackeys_platformer_assets/sprites/头像1.png" id="2_4qu41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbkhf"]
+size = Vector2(55, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bypon"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4qu41")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D" groups=["头像"]]
+script = ExtResource("1_4qu41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -18)
+shape = SubResource("RectangleShape2D_sbkhf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -23)
+scale = Vector2(0.217027, 0.217027)
+sprite_frames = SubResource("SpriteFrames_bypon")
+animation = &"idle"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp6v0anlaslx1"]
+
+[ext_resource type="Texture2D" uid="uid://d1ma0y5t04pbp" path="res://brackeys_platformer_assets/sprites/ball.png" id="1_d8dhm"]
+[ext_resource type="Script" uid="uid://cv58fyesriuy3" path="res://scripts/ball.gd" id="1_h6iok"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6iok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d8dhm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h45nl"]
+radius = 5.0
+
+[node name="Area2D" type="Area2D" groups=["ball"]]
+script = ExtResource("1_h6iok")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h6iok")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h45nl")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://cemk6xbauvaes"]
+
+[ext_resource type="Texture2D" uid="uid://wtdsv60wr0lm" path="res://brackeys_platformer_assets/sprites/Torah.png" id="1_0wkfu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gkbm"]
+atlas = ExtResource("1_0wkfu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj2rb"]
+atlas = ExtResource("1_0wkfu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdems"]
+atlas = ExtResource("1_0wkfu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hnin"]
+atlas = ExtResource("1_0wkfu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qyvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gkbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj2rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdems")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hnin")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hed1"]
+size = Vector2(17, 23)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6qyvo")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.906976
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_6hed1")

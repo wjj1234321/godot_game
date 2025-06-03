@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://b80t5tei3p8fr"]
+
+[ext_resource type="Script" uid="uid://b6wlc2f4oo8fl" path="res://scripts/enemy.gd" id="1_dregr"]
+[ext_resource type="Texture2D" uid="uid://donb0l5w81y8p" path="res://brackeys_platformer_assets/sprites/Pig.png" id="2_dregr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sja4v"]
+atlas = ExtResource("2_dregr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta25w"]
+atlas = ExtResource("2_dregr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8vfm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sja4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta25w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lf1m"]
+size = Vector2(16, 11)
+
+[node name="Enemy" type="Area2D"]
+script = ExtResource("1_dregr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.38419e-07, -1)
+scale = Vector2(0.859375, 0.859375)
+sprite_frames = SubResource("SpriteFrames_v8vfm")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.580754
+
+[node name="self" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8lf1m")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-7, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(7, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
